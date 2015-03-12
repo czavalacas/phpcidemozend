@@ -13,7 +13,6 @@ class M_usuario extends CI_Model{
 				        And o.dni     = ?
 	                    And o.estado_usuario = '1' Limit 1 ";
 			$result = $this->db->query($sql, array($s_usr, $s_pwd));
-			//$result = mysql_query($sql) /*or die ($query)*/;
 			return $result;
 		}
 		return null;
