@@ -12,12 +12,6 @@ class M_usuario extends CI_Model{
 	                  Where o.usuario = ?
 				        And o.dni     = ?
 	                    And o.estado_usuario = '1' Limit 1 ";
-			/*
-			if($this->db->_error_message()){
-			    $error = $this->db->_error_message();
-				log_message('error','errrro: '.$error);
-			}*/
-			//throw new Exception("Value must be 1 or below");
 			$result = $this->db->query($sql, array($s_usr, $s_pwd));
 			//$result = mysql_query($sql) /*or die ($query)*/;
 			return $result;
