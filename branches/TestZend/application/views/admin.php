@@ -11,18 +11,22 @@
 
     <title><?php echo $titulo;?></title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="<?php echo base_url();?>public/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="<?php echo base_url();?>public/css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="<?php echo base_url();?>public/css/plugins/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="<?php echo base_url();?>public/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	
+  <!--  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"> -->
+   <link href="<?php echo base_url();?>public/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+   <link href="<?php echo base_url();?>public/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+   <link href="<?php echo base_url();?>public/css/sb-admin.css" rel="stylesheet">
+   
+   
+   <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+   <script src="<?php echo base_url();?>public/js/jquery-1.11.1.min.js"></script>
+   <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+   <!--<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
+   <!-- Bootstrap Core JavaScript -->
+   <script src="<?php echo base_url();?>public/js/bootstrap.min.js"></script>
+   <script type="text/javascript"
+        src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart','table','piechart','linechart','controls','charteditor']}]}">
+   </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -30,7 +34,6 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<script>
-	
        function invocarPantalla(id){
            if(id == 'tabAjax'){
                loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
@@ -45,27 +48,21 @@
 	   			url: id,
 	   			data: { idObj:id },
 	   			success: function(data){
-	   				//alert('hihi '+data);
 	   				$('#page-wrapper').html(data);
-	   				/*$('.suggestresult li').click(function(){
-	   					var nombreProf = $(this).text();
-	   					var dniProf = $(this).attr('dniProf');
-	   					alert('dniProf: '+dniProf+' , nombreProf: '+nombreProf);
-	   					$('.abhijitscript').attr('value', nombreProf); 
-	   					$('.abhijitscript').val(nombreProf);
-	   					$('.suggestresult').html('');
-	   				});*///Fin del click
+	   				if(id = 'func'){
+	   					$('#example').dataTable();
+	   				}
 	   			}
 	   		});//fin del ajax
        }
       
        function loadjscssfile(filename, filetype){
-    	    if (filetype == "js"){ //if filename is a external JavaScript file
+    	    if (filetype == "js"){
     	        var fileref = document.createElement('script');
     	        fileref.setAttribute("type","text/javascript");
     	        fileref.setAttribute("src", filename);
     	    }
-    	    else if (filetype == "css"){ //if filename is an external CSS file
+    	    else if (filetype == "css"){
     	        var fileref = document.createElement("link");
     	        fileref.setAttribute("rel", "stylesheet");
     	        fileref.setAttribute("type", "text/css");
@@ -250,16 +247,5 @@
 
     </div>
     <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="<?php echo base_url();?>public/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo base_url();?>public/js/bootstrap.min.js"></script>
-    <script type="text/javascript"
-        src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart','table','piechart','linechart','controls','charteditor']}]}">
-  </script>
-    
 </body>
-
 </html>

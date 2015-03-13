@@ -119,5 +119,11 @@
 		</div>	    	
 	</div>
 </div>
+<?php 
+   /*$res = $this->db->query('SELECT MOD(29,9) as resu');
+   if ($res->num_rows() > 0) {
+   	   echo $res->row()->resu;
+   }*/
+?>
 </body>
 </html>

@@ -27,7 +27,7 @@ class C_tabla extends CI_Controller {
 		$this->table->set_template($tmpl);
 		$this->table->set_heading('ID SEDE', 'SEDE');
 		foreach($data as $fila){
-			$this->table->add_row($fila['nidSede'],$fila['desc_sede']);
+			$this->table->add_row($fila['nidsede'],$fila['desc_sede']);
 		}
 		$tabla = $this->table->generate();
 		return $tabla;

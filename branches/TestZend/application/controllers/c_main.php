@@ -8,7 +8,7 @@ class C_main extends CI_Controller {
 		$this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
 		$this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
 		$this->output->set_header('Pragma: no-cache');
-		//$this->load->model('m_consulta');
+		$this->load->model('mf_menu/m_menu');
 	}
 
 	public function index(){
@@ -27,17 +27,24 @@ class C_main extends CI_Controller {
 	}
 	
 	function buildOpciones(){
-		$opciones = array();//'class="active"'
-		$opc1 = $this->buildHTML('Tabla Code Igniter', 'glyphicon glyphicon-list-alt',null,'tabla');
-		$opc2 = $this->buildHTML('ComboBox Ajax', 'glyphicon glyphicon-object-align-top',null,'combo');
-		$opc3 = $this->buildHTML('Tabla Ajax', 'glyphicon glyphicon-calendar',null,'tabAjax');
-		$opc4 = $this->buildHTML('Autocompletar', 'glyphicon glyphicon-align-justify',null,'autoc');
-		array_push($opciones,$opc1,$opc2,$opc3,$opc4);
-		return $opciones;
+		$opciones = $this->m_menu->m_getMenu();
+		$opcionesHTml = array();
+		foreach($opciones as $opcion){
+			$opc = $this->buildHTML($opcion['desc_menu'], $opcion['css_class'],$opcion['id_obj_html']);
+			array_push($opcionesHTml,$opc);
+		}
+		/*$opciones = array();
+		$opc1 = $this->buildHTML('Tabla Code Igniter', 'glyphicon glyphicon-list-alt','tabla');
+		$opc2 = $this->buildHTML('ComboBox Ajax', 'glyphicon glyphicon-object-align-top','combo');
+		$opc3 = $this->buildHTML('Tabla Ajax', 'glyphicon glyphicon-calendar','tabAjax');
+		$opc4 = $this->buildHTML('Autocompletar', 'glyphicon glyphicon-align-justify','autoc');
+		$opc5 = $this->buildHTML('Tabla Funcion PSQL', 'glyphicon glyphicon-align-justify','func');
+		array_push($opciones,$opc1,$opc2,$opc3,$opc4,$opc5);*/
+		return $opcionesHTml;
 	}
 	
-	function buildHTML($opcion,$clase,$active,$idPantalla){
-		return '<li '.$active.'>
+	function buildHTML($opcion,$clase,$idPantalla){
+		return '<li>
 				   <a id="'.$idPantalla.'" onClick="invocarPantalla(this.id);">
 				   		<i class="'.$clase.'"></i>'.$opcion.
 		          '</a>
@@ -55,9 +62,9 @@ class C_main extends CI_Controller {
 		}
 	}///cf_seguridad/c_login,default_controller
 	//SubMenu
-	//<i class="fa fa-fw fa-caret-down"></i>
-	//href="javascript:;" data-toggle="collapse" data-target="#demo"
-	/*
+	//Agregar propiedad al <a> --> href="javascript:;" data-toggle="collapse" data-target="#demo"
+	//Agregar antes de cerrar el <a><i class="fa fa-fw fa-caret-down"></i>
+	/* Agregar antes de cerrar el <li>
 	 <ul id="demo" class="collapse">
                             <li>
                                 <a href="#">Dropdown Item</a>
