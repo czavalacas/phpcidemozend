@@ -15,7 +15,7 @@ class C_autocompletar extends CI_Controller {
 		if(isset($_POST['name'])){
 			$profes = $this->m_consulta->getAutoCompletarProfes($_POST['name']);
 			foreach($profes as $fila){
-				echo '<li dniProf= "'.$fila['dniProfesor'].'" >'.$fila['nombres'].'</li>';
+				echo '<li dniProf= "'.$fila['dniprofesor'].'" >'.$fila['nombres'].'</li>';
 			}
 		}
 	}

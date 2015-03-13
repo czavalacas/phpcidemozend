@@ -49,10 +49,10 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'root';
-$db['default']['database'] = 'mmsi_sped';
-$db['default']['dbdriver'] = 'mysql';
+$db['default']['username'] = 'postgres';
+$db['default']['password'] = 'postgres';
+$db['default']['database'] = 'ciphpdemo';
+$db['default']['dbdriver'] = 'postgre';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
@@ -64,6 +64,10 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+/* en el php.ini quitar comentario a luego, reiniciar el apache
+extension=php_pdo_pgsql.dll
+extension=php_pgsql.dll
+*/
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
