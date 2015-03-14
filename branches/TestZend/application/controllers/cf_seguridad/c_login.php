@@ -37,7 +37,6 @@ class C_login extends CI_Controller {
 		}else{
 			$result = $this->m_usuario->getUsuarioLogin($_POST['username'],$_POST['password']);
 			if($result != null){
-				$pagina = 'admin';
 				$this->load->helper('url');
 				$this->load->helper('date_helper');
 				$this->load->library('session');
