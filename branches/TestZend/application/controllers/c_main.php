@@ -30,7 +30,11 @@ class C_main extends CI_Controller {
 		$opciones = $this->m_menu->m_getMenu();
 		$opcionesHTml = array();
 		foreach($opciones as $opcion){
-			$opc = $this->buildHTML($opcion['desc_menu'], $opcion['css_class'],$opcion['id_obj_html']);
+			$opc = $this->buildHTML($opcion['desc_menu'], 
+									$opcion['css_class'],
+									$opcion['id_obj_html'],
+									$opcion['flg_has_hijos'],
+					                $opcion['id_menu']);
 			array_push($opcionesHTml,$opc);
 		}
 		/*$opciones = array();
@@ -43,13 +47,32 @@ class C_main extends CI_Controller {
 		return $opcionesHTml;
 	}
 	
-	function buildHTML($opcion,$clase,$idPantalla){
+	function buildHTML($opcion,$clase,$idPantalla,$flg_has_hijos,$idMenu){
+		$propA   = "";
+		$subMenu = "";
+		$estilo  = "";
+		if($flg_has_hijos == "1"){
+			$propA = 'href="javascript:;" data-toggle="collapse" data-target="#sub'.$idPantalla.'" ';
+			$estilo = '<i class="fa fa-fw fa-caret-down"></i>';
+			$subMenu = '<ul id="sub'.$idPantalla.'" class="collapse">';
+			$hijos = $this->m_menu->m_getMenuHijosByPadre($idMenu);
+			foreach($hijos as $hijo){
+				$subMenu .= '<li>
+							   <a id="'.$hijo['id_obj_html'].'" onClick="invocarPantalla(this.id);" >
+							   		<i class="'.$hijo['css_class'].'"></i>'.$hijo['desc_menu'].
+										   		'</a>
+					        </li>';
+			}
+			$subMenu .= "</ul>";
+		}else{
+			$propA = ' onClick="invocarPantalla(this.id);" ';
+		}
 		return '<li>
-				   <a id="'.$idPantalla.'" onClick="invocarPantalla(this.id);">
-				   		<i class="'.$clase.'"></i>'.$opcion.
-		          '</a>
-		          		
-		        </li>';
+			   <a id="'.$idPantalla.'"  '.$propA.'>
+			   		<i class="'.$clase.'"></i>'.$opcion.' '.$estilo.
+			  '</a>
+	          '.$subMenu.'
+	        </li>';
 	}
 	
 	function logOut(){
