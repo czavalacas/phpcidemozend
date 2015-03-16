@@ -68,7 +68,41 @@ class M_usuario extends CI_Model{
 		}*/
 		return $data;
 	}
+	
+	function getallUsua(){
+	    $result = $this->db->query("SELECT * FROM admusua");
+	    return $result;
+	}
+	
+	function getallUsuaPostgres(){
+	    $usuarios = $this->getallUsua();
+	
+	    $data = array();
+	    foreach ($usuarios->result() as $row){
+	        $fila = array("nidusuario" =>$row->nidusuario,
+	            "usuario"     =>$row->usuario,
+	            "correo"   =>$row->correo,
+	            "estado_usuario"     =>$row->estado_usuario
+	        );
+	
+	        array_push($data, $fila);
+	    }
+	    return $data;
+	}
+	
+	function getDataUsuarioSelecc($nid){
+	    $query = $this->db->query("SELECT o.dni,o.nombres FROM admusua o WHERE o.nidusuario = ".$nid);
+	    
+	    $data = array();
+	    foreach($query->result() as $row) {
+	        $fila = array("dni"=>$row->dni,"nombres"=>$row->nombres);
+	        array_push($data, $fila);
+	    }
+	    
+	    return $data;
+	}
 }
+
 /*
  CREATE EXTENSION pgcrypto;
 
