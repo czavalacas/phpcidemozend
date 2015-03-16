@@ -49,5 +49,6 @@ $route['tabAjax'] = 'cf_tabla_ajax/c_tabla_ajax';
 $route['combo'] = 'cf_combo/c_combo';
 $route['autoc'] = 'cf_autocompletar/c_autocompletar';
 $route['func'] = 'cf_funcion/c_funcion';
+$route['tabmodal'] = 'cf_tabla_modal/c_tabla_modal';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

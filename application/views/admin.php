@@ -24,6 +24,9 @@
    <!--<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
    <!-- Bootstrap Core JavaScript -->
    <script src="<?php echo base_url();?>public/js/bootstrap.min.js"></script>
+   
+
+   
    <script type="text/javascript"
         src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart','table','piechart','linechart','controls','charteditor']}]}">
    </script>
@@ -42,7 +45,13 @@
            }else if(id == 'autoc'){
         	   loadjscssfile("<?php echo base_url();?>public/css/style.css","css");
         	   loadjscssfile("<?php echo base_url();?>public/js/autosuggestion.js","js");
+           }else if(id == 'tabmodal'){
+        	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
+
+        	   loadjscssfile("<?php echo base_url();?>public/css/bTable/bootstrap-table.css","css");
+        	   loadjscssfile("<?php echo base_url();?>public/js/bTable/bootstrap-table.js","js");
            }
+               
     	   $.ajax({
 	   			type: "POST",
 	   			url: id,
@@ -247,5 +256,8 @@
 
     </div>
     <!-- /#wrapper -->
+    
+    
+ 
 </body>
 </html>
