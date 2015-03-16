@@ -47,9 +47,6 @@
         	   loadjscssfile("<?php echo base_url();?>public/js/autosuggestion.js","js");
            }else if(id == 'tabmodal'){
         	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
-
-        	   loadjscssfile("<?php echo base_url();?>public/css/bTable/bootstrap-table.css","css");
-        	   loadjscssfile("<?php echo base_url();?>public/js/bTable/bootstrap-table.js","js");
            }
                
     	   $.ajax({

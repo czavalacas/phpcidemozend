@@ -6,6 +6,7 @@ class C_tabla_modal extends CI_Controller {
     function __construct(){
         parent::__construct();
         $this->load->model('m_consulta');
+        $this->load->model('mf_usuario/m_usuario');
         $this->load->library('table');
     }
     
@@ -18,8 +19,8 @@ class C_tabla_modal extends CI_Controller {
     }
     
     public function init(){
-        $sedes = $this->m_consulta->getArrayFunct();
-        $tabla = $this->getDataCtrl($sedes);
+        $usua = $this->m_usuario->getallUsuaPostgres();
+        $tabla = $this->getDataCtrl($usua);
         return $tabla;
     }
     
@@ -31,8 +32,8 @@ class C_tabla_modal extends CI_Controller {
                             <table class="table table-bordered table-hover table-striped" data-show-columns="true">
                                 <thead>
                                     <tr>
-                                        <th style="text-align:center">DNI</th>
-                                        <th style="text-align:center">Nombre</th>
+                                        <th style="text-align:center">NidUusuario</th>
+                                        <th style="text-align:center">Usuario</th>
                                         <th style="text-align:center">Correo</th>
                                         <th style="text-align:center">Boton</th>
                                     </tr>
@@ -40,23 +41,18 @@ class C_tabla_modal extends CI_Controller {
                                 <tbody>';
         
         foreach($data as $fila){
-            $est = $fila['estado'];
+            $est = $fila['estado_usuario'];
             if($est == 1){
                 $tab.='<tr  class="success"> ';
-                $tab.='<th style="text-align:center">'.$fila['dniprof'].'</th> ';
-                $tab.='<th style="text-align:center">'.$fila['nombres'].'</th> ';
-                $tab.='<th style="text-align:center">'.$fila['correo'].'</th> ';
-                $tab.='<th style="text-align:center">'.'<button class="btn btn-primary btn-md" onclick="abrirModal('.$fila['dniprof'].')">Ver</button>'.'</th> ';
-                $tab.='</tr> ';
             }
             else{
                 $tab.='<tr class="danger"> ';
-                $tab.='<th style="text-align:center">'.$fila['dniprof'].'</th> ';
-                $tab.='<th style="text-align:center">'.$fila['nombres'].'</th> ';
-                $tab.='<th style="text-align:center">'.$fila['correo'].'</th> ';
-                $tab.='<th style="text-align:center">'.'<button class="btn btn-primary btn-md" onclick="abrirModal('.$fila['dniprof'].')">Ver</button>'.'</th> ';
-                $tab.='</tr> ';
             }
+            $tab.='<th style="text-align:center">'.$fila['nidusuario'].'</th> ';
+            $tab.='<th style="text-align:center">'.$fila['usuario'].'</th> ';
+            $tab.='<th style="text-align:center">'.$fila['correo'].'</th> ';
+            $tab.='<th style="text-align:center">'.'<button class="btn btn-primary btn-md" onclick="abrirModal('.$fila['nidusuario'].')">Ver</button>'.'</th> ';
+            $tab.='</tr> ';
         }
         
         
@@ -70,17 +66,17 @@ class C_tabla_modal extends CI_Controller {
         return $tab;
     }
     
-    function traeDataRow($dni){
+    function traeDataRow($nid){
         
-        $result = $this->m_consulta->getDataProfesorSelecc($dni);
+        $result = $this->m_usuario->getDataUsuarioSelecc($nid);
         
-        $res = 'fe';
+        $res = '';
         foreach($result as $fila){
             $res =  '<form class="form-inline">
                       <div class="form-group">
                         <div class="input-group">
                           <div class="input-group-addon">DNI</div>
-                          <input type="text" class="form-control" id="exampleInputAmount" value="'.$fila['dniprof'].'" disabled>
+                          <input type="text" class="form-control" id="exampleInputAmount" value="'.$fila['dni'].'" disabled>
                         </div>
                               <br/>
                               <br/>
