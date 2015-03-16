@@ -115,17 +115,5 @@ class M_consulta extends CI_Model{
 	    }
 	    return $data;
 	}
-	
-	function getDataProfesorSelecc($dni){
-	    $query = $this->db->query("SELECT o.dniprof,o.nombres FROM fun_get_profes() o WHERE o.dniprof like "."'%".$dni."%'");
-	    
-	    $data = array();
-	    foreach($query->result() as $row) {
-	        $fila = array("dniprof"=>$row->dniprof,"nombres"=>$row->nombres);
-	        array_push($data, $fila);
-	    }
-	    
-	    return $data;
-	}
 }
 ?>
