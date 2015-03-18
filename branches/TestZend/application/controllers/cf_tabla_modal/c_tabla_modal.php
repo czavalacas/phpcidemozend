@@ -58,11 +58,6 @@ class C_tabla_modal extends CI_Controller {
         
         $tab.=' </tbody> </table> </div>';
         
-        
-        
-        
-        
-        $tabla = $this->table->generate();
         return $tab;
     }
     
