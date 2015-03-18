@@ -7,7 +7,6 @@ function drawGrafic(){
 	        'async' : false,
 	         dataType:"json",
 		    success: function(data) {
-		    	alert(data);
 		    	Morris.Donut({
 		  		  element: 'myfirstchart',
 		  		  data:data
