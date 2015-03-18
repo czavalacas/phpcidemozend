@@ -50,5 +50,7 @@ $route['combo'] = 'cf_combo/c_combo';
 $route['autoc'] = 'cf_autocompletar/c_autocompletar';
 $route['func'] = 'cf_funcion/c_funcion';
 $route['tabmodal'] = 'cf_tabla_modal/c_tabla_modal';
+$route['grafic'] = 'cf_graficos/c_graficos';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
