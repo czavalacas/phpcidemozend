@@ -47,7 +47,14 @@
         	   loadjscssfile("<?php echo base_url();?>public/js/autosuggestion.js","js");
            }else if(id == 'tabmodal'){
         	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
+           }else if(id == 'grafic'){
+        	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
+
+        	   loadjscssfile("<?php echo base_url();?>public/js/morris/morris.js","js");
+        	   loadjscssfile("<?php echo base_url();?>public/js/morris/raphael.min.js","js");
+        	   loadjscssfile("<?php echo base_url();?>public/css/morris/morris.css","css");
            }
+               
                
     	   $.ajax({
 	   			type: "POST",

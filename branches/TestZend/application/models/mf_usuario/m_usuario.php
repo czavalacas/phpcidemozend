@@ -91,15 +91,34 @@ class M_usuario extends CI_Model{
 	}
 	
 	function getDataUsuarioSelecc($nid){
-	    $query = $this->db->query("SELECT o.dni,o.nombres FROM admusua o WHERE o.nidusuario = ".$nid);
+	    $query = "SELECT o.dni,o.nombres FROM admusua o WHERE o.nidusuario = ?";
+	    
+	    $result = $this->db->query($query, array($nid));
 	    
 	    $data = array();
-	    foreach($query->result() as $row) {
+	    foreach($result->result() as $row) {
 	        $fila = array("dni"=>$row->dni,"nombres"=>$row->nombres);
 	        array_push($data, $fila);
 	    }
 	    
 	    return $data;
+	}
+	
+	function getCountEstUsua(){
+	    $result = $this->db->query("SELECT estado_usuario, COUNT(*) as cuenta FROM admusua GROUP BY estado_usuario;");
+	    
+	    $data = array();
+	    foreach ($result->result() as $row){
+	        
+	        $label = (1 == $row->estado_usuario) ? 'Activo' : 'Inactivo';
+	        
+	            $fila = array("label" =>$label,
+	                           "value" =>$row->cuenta
+	            );
+	        array_push($data, $fila);
+	    }
+	    return $data;
+	    
 	}
 }
 
