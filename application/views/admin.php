@@ -53,6 +53,8 @@
         	   loadjscssfile("<?php echo base_url();?>public/js/morris/morris.js","js");
         	   loadjscssfile("<?php echo base_url();?>public/js/morris/raphael.min.js","js");
         	   loadjscssfile("<?php echo base_url();?>public/css/morris/morris.css","css");
+           }else if(id == 'upload'){
+        	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
            }
                
                

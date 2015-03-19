@@ -25,7 +25,7 @@ class C_tabla extends CI_Controller {
 	function getDataCtrl($data){
 		$tmpl = array('table_open' => '<table border="1" cellpadding="2" cellspacing="1" class="mytable">');
 		$this->table->set_template($tmpl);
-		$this->table->set_heading('ID SEDE', 'SEDE','OPC');
+		$this->table->set_heading('ID SEDE', 'SEDE');
 		foreach($data as $fila){
 			$this->table->add_row($fila['nidsede'],$fila['desc_sede']);
 		}
