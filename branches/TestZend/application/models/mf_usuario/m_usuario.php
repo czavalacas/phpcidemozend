@@ -120,6 +120,39 @@ class M_usuario extends CI_Model{
 	    return $data;
 	    
 	}
+	
+	function getCountEstUsua1(){
+	    $result = $this->db->query("SELECT estado_usuario, COUNT(*) as cuenta FROM admusua GROUP BY estado_usuario;");
+	     
+	    $data = array();
+	    foreach ($result->result() as $row){
+	         
+	        $label = (1 == $row->estado_usuario) ? 'Activo' : 'Inactivo';
+	         
+	        $fila = array("y" =>$row->cuenta,
+	                      "x" =>$row->estado_usuario,
+	                      "legendText" =>$label,
+	                      "indexLabel" => $label
+	        );
+	        array_push($data, $fila);
+	    }
+	    return $data;
+	     
+	}
+	
+	function getUsuariosbyEstado($estado){
+	    $query = "select o.dni,o.nombres from admusua o where o.estado_usuario = ?";
+	    
+	    $result = $this->db->query($query, array($estado));
+	    
+	    $data = array();
+	    foreach($result->result() as $row) {
+	        $fila = array("dni"=>$row->dni,"nombres"=>$row->nombres);
+	        array_push($data, $fila);
+	    }
+	     
+	    return $data;
+	}
 }
 
 /*
