@@ -12,7 +12,8 @@ class C_graficos extends CI_Controller {
         if(isset($_POST['idObj'])){
             $data['titulo'] = 'Titulo contenido '.$_POST['idObj'];
             $this->load->view('vf_graficos/v_graficos',$data);
-            echo "<script language=\"javascript\">drawGrafic();</script>";
+            //echo "<script language=\"javascript\">drawGrafic();</script>";
+            echo "<script language=\"javascript\">drawGrafic1();</script>";
         }
     }
     
@@ -22,5 +23,43 @@ class C_graficos extends CI_Controller {
         $re = json_encode($usua);
         
         echo $re;
+    }
+    
+    function dataJSONusuaEst1(){
+        $usua = $this->m_usuario->getCountEstUsua1();
+    
+        $re = json_encode($usua);
+    
+        echo $re;
+    }
+    
+    function usuarioByEstado($estado){
+        
+        $usua = $this->m_usuario->getUsuariosbyEstado($estado);
+        
+        $tab = '      <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped" data-show-columns="true">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center">DNI</th>
+                                        <th style="text-align:center">Nombres</th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+        
+        foreach($usua as $fila){
+            $tab.='<tr> ';
+            $tab.='<th style="text-align:center">'.$fila['dni'].'</th> ';
+            $tab.='<th style="text-align:center">'.$fila['nombres'].'</th> ';
+            $tab.='</tr> ';
+        }
+        
+        
+        $tab.=' </tbody> </table> </div>';
+        
+        echo $tab;
+
+        
+        
     }
 }
