@@ -50,9 +50,8 @@ $route['combo'] = 'cf_combo/c_combo';
 $route['autoc'] = 'cf_autocompletar/c_autocompletar';
 $route['func'] = 'cf_funcion/c_funcion';
 $route['tabmodal'] = 'cf_tabla_modal/c_tabla_modal';
-$route['grafic'] = 'cf_graficos/c_graficos';
-$route['upload'] = 'cf_upload/c_upload';
+$route['grafic'] = 'cf_graficos/c_graficos';$route['upload'] = 'cf_upload/c_upload';
 $route['subir'] = 'cf_upload/c_upload/do_upload';
-
+$route['check'] = 'cf_checkboxes/c_checkboxes';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
