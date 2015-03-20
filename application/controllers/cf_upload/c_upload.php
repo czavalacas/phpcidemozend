@@ -38,7 +38,7 @@ class C_upload extends CI_Controller {
 			if($upload_data['file_ext'] == '.pdf'){
 				//log_message('error',print_r($upload_data,true));
 				$data['objeto'] = '
-				<object width="400" height="500" type="application/pdf"
+				<object width="80%" height="500" type="application/pdf"
 						data="/'.$rutaMostrar.'?#zoom=85&scrollbar=0&toolbar=0&navpanes=0" id="pdf_content">
 						<p>Hubo un error al mostrar el PDF.</p>
 				</object>';
