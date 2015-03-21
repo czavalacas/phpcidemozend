@@ -57,7 +57,12 @@
         	   loadjscssfile("<?php echo base_url();?>public/js/canvas/canvasjs.min.js","js");
            }else if(id == 'upload'){
         	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
+           }else if(id == 'check'){
+        	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
+        	   loadjscssfile("<?php echo base_url();?>public/css/"+id+"/cs"+id+".css","css");
            }
+
+           
                
                
     	   $.ajax({
