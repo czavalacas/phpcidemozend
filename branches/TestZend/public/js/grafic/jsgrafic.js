@@ -42,9 +42,8 @@ function drawGrafic1(){
 		    		    		        'url' : 'index.php/cf_graficos/c_graficos/usuarioByEstado/'+est,
 		    		    		        'async' : false
 		    		    		    }).responseText;	
-		    		    		  
+		    		    		 
 		    		    		    document.getElementById("contenido").innerHTML = result; 
-
 		    		    		    $('#myModal').modal('toggle');
 		    		    		  
 		    		    	        },
