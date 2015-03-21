@@ -3,10 +3,14 @@
       <br>
 
 <?php 
+echo $js;
 foreach($checkbox as $chk){
 	echo $chk;
 }
+?>
+ <br>
+  <input type="submit" value="Actualiza Ruta BD"   onclick="getSeleccionados();" />   
+    </div>
 
-			?>
-   </div>
+
 
