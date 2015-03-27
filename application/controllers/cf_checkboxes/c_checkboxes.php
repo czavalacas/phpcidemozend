@@ -9,6 +9,20 @@ class C_checkboxes extends CI_Controller {
 
 	public function index(){
 		if(isset($_POST['idObj'])){
+			$rutas = $this->m_checkboxes->getRutaCertificacion();
+			$strConcatenado='';
+			
+				foreach($rutas->result() as $row) {
+					$nidRuta=$row->nidruta;
+					$desc_ruta= $row->desc_ruta;			
+					$estado= $row->estado;
+   
+					$strConcatenado = $strConcatenado.form_checkbox($this->setPropiedadesCheckBoxes($nidRuta,$estado,$desc_ruta)).$desc_ruta.'<br>';
+				}		
+		
+			$data['checkbox'] =	array($strConcatenado);
+			
+		    $data['titulo'] = ' Ejemplo de CheckBox '.$_POST['idObj'];
 			$data['checkbox'] =	array($this->drawCheckBoxes());		
 			$data['titulo'] = ' Ejemplo de CheckBox '.$_POST['idObj'];
 			$data['js'] = '<script> $(document).ready(function (){ customCheckbox("rutas");  }) </script>'; //js para dar estilo
@@ -21,7 +35,7 @@ class C_checkboxes extends CI_Controller {
 		$strConcatenado='';
 			
 		foreach($rutas->result() as $row) {
-			$nidRuta=$row->nidRuta;
+			$nidRuta=$row->nidruta;
 			$desc_ruta= $row->desc_ruta;
 			$estado= $row->estado;
 			 
