@@ -16,5 +16,9 @@ class M_checkboxes extends CI_Model{
 		$this->db->update('admrutacerti', $update_data, "nidRuta = ".$id);
 	}
 	
+	function insertarRuta($insert_data){
+		$this->db->insert('admrutacerti', $insert_data);
+	}
+	
 }
 ?>

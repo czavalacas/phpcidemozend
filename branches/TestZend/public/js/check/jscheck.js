@@ -1,5 +1,4 @@
 function getSeleccionados(){
-	
       var nid = [];
       var nidNoSelect = [];
 	  var descSeleccionados = [];	 
@@ -48,9 +47,7 @@ function getSeleccionados(){
 	  if(nidNoSelect.length > 0 && nid.length > 0){
 		  alert("Rutas Actualizadas : " + descSeleccionados.join(" / ")); //muestra los selecionados
 	  }
-	  	  
-	
-}
+	  	  }
 
 function customCheckbox(checkboxName){
     var checkBox = $('input[name="'+ checkboxName +'"]');
@@ -64,3 +61,64 @@ function customCheckbox(checkboxName){
         $(this).parent().toggleClass("selected");
     });
 }
+
+function realizaProceso(valorCaja1, valorCaja2){
+	//Primero definir los valores a enviar
+	$valorCaja1=valorCaja1;
+	$valorCaja2=valorCaja2;
+    $.ajax({
+          //  data:  parametros,
+            url:   'index.php/cf_checkboxes/c_checkboxes/sumas/'+$valorCaja1+'/'+$valorCaja2, //direcion y parametros del metodo que se ejecutara
+            type:  'post',
+            beforeSend: function () {
+                    $("#resultado").html("Procesando, espere por favor...");
+            },
+            success:  function (response) {
+                    $("#resultado").html(response);
+            }
+    });
+    
+}
+
+function getPopupNuevaRuta(){	
+	var result = $.ajax({	     
+	            url:   'index.php/cf_checkboxes/c_checkboxes/getPopup/', //direcion y parametros del metodo que se ejecutara	     
+	            'async' : false
+	            
+	}).responseText;		        
+	            	document.getElementById("contenido").innerHTML = result; 	            
+	            	  $('#myModal').modal('toggle');   
+	            	  
+	            
+	            	  
+	            	  
+}
+
+function agregarRuta(){
+	if($('#inputRuta').val()==''){
+		 alert("Ingrese un Nombre Valido");
+		 
+	}else{
+		$data=$('#inputRuta').val();
+		 $.ajax({
+	          //  data:  parametros,
+	         
+			    url:   'index.php/cf_checkboxes/c_checkboxes/agregarNuevaRuta/'+$data, //direcion y parametros del metodo que se ejecutara
+			    type: "POST",
+	            beforeSend: function () {
+	            	
+	              //      $("#resultado").html("Procesando, espere por favor...");
+	            },
+	            success:  function (response) {
+	                   $("#conte").html(response);
+	            }
+	    });
+		
+		
+		
+		
+		 $("#myModal").hide();//esconde popup
+	}
+	
+}
+
