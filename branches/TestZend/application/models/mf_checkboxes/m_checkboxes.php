@@ -20,5 +20,28 @@ class M_checkboxes extends CI_Model{
 		$this->db->insert('admrutacerti', $insert_data);
 	}
 	
+	function insertRuta($data){
+	    $this->db->insert("admrutacerti",$data);
+	}
+	
+	function getRutabyNid($nid){
+	    
+	    $query = "Select * FROM admrutacerti WHERE nidruta = ?";
+	     
+	    $result = $this->db->query($query, array($nid));
+	    
+	    return $result;
+	}
+	
+	function elimRuta($nid){
+	    $this->db->where("nidruta",$nid);
+	    $this->db->delete("admrutacerti");
+	}
+	
+	function editRuta($data,$nid){
+	    $this->db->where("nidruta",$nid);
+	    $this->db->update("admrutacerti",$data);
+	}
+	
 }
 ?>

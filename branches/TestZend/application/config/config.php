@@ -14,7 +14,7 @@
 | path to your installation.
 http://10.1.1.112/testzend/
 */
-$config['base_url']	= 'http://localhost/testzend/';
+$config['base_url']	= 'http://localhost:8081/testzend/';
 
 /*
 |--------------------------------------------------------------------------
