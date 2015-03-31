@@ -6,7 +6,7 @@ function callDZJS(){
     previewNode.parentNode.removeChild(previewNode);
 
     var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-      url: "http://www.torrentplease.com/dropzone.php", // Set the url
+      url: "index.php/cf_drop_zone/c_drop_zone", // Set the url
       thumbnailWidth: 80,
       thumbnailHeight: 80,
       maxFilesize: 2,

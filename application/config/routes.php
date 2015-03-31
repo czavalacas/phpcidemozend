@@ -56,6 +56,7 @@ $route['subir'] = 'cf_upload/c_upload/do_upload';
 $route['check'] = 'cf_checkboxes/c_checkboxes';
 $route['drop'] = 'cf_drop_zone/c_drop_zone';
 $route['trans'] = 'cf_transacciones/c_transacciones';
+$route['muchos'] = 'cf_muchosamuchos/c_muchosamuchos';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
