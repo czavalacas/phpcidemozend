@@ -1,26 +1,22 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class C_tabla_modal extends CI_Controller {
+class C_muchosamuchos extends CI_Controller {
     
     
     function __construct(){
         parent::__construct();
-        $this->load->model('m_consulta');
         $this->load->model('mf_usuario/m_usuario');
-        $this->load->library('table');
     }
     
-    public function index(){
+    function index(){
         if(isset($_POST['idObj'])){
             $data['titulo'] = 'Titulo contenido '.$_POST['idObj'];
             $data['table'] = $this->init();
-            $this->load->view('vf_tabla_modal/v_tabModal',$data);
-            
-            echo "<script language=\"javascript\">entrada();</script>";
+            $this->load->view('vf_muchosamuchos/v_muchosamuchos',$data);
         }
     }
     
-    public function init(){
+public function init(){
         $usua = $this->m_usuario->getallUsuaPostgres();
         $tabla = $this->getDataCtrl($usua);
         return $tabla;
@@ -31,7 +27,7 @@ class C_tabla_modal extends CI_Controller {
         $tab="";
         
         $tab = '      <div class="table-responsive">
-                            <table id="example" class="table display table-hover table-striped" data-show-columns="true">
+                            <table class="table table-bordered table-hover table-striped" data-show-columns="true">
                                 <thead>
                                     <tr>
                                         <th style="text-align:center">NidUusuario</th>
@@ -65,25 +61,28 @@ class C_tabla_modal extends CI_Controller {
     
     function traeDataRow($nid){
         
-        $result = $this->m_usuario->getDataUsuarioSelecc($nid);
+        $result = $this->m_usuario->getPermisosxUsuario($nid);
         
         $res = '';
         foreach($result as $fila){
-            $res =  '<form class="form-inline">
+            $res .=  '<form class="form-inline">
                       <div class="form-group">
                         <div class="input-group">
-                          <div class="input-group-addon">DNI</div>
-                          <input type="text" class="form-control" id="exampleInputAmount" value="'.$fila['dni'].'" disabled>
+                          <div class="input-group-addon">idPermiso</div>
+                          <input type="text" class="form-control" id="exampleInputAmount" value="'.$fila['id_menu'].'" disabled>
                         </div>
                               <br/>
                               <br/>
                         <div class="input-group">
-                          <div class="input-group-addon">Nombres</div>
-                          <input type="text" class="form-control" id="exampleInputAmount" value="'.$fila['nombres'].'" disabled>
+                          <div class="input-group-addon">Descripcion</div>
+                          <input type="text" class="form-control" id="exampleInputAmount" value="'.$fila['desc_menu'].'" disabled>
                         </div>
                                     
                       </div>
-                    </form>';
+                    </form>
+                              
+                              <br/>';
+             
         }
         
             
@@ -93,5 +92,8 @@ class C_tabla_modal extends CI_Controller {
         echo $res;   
     }
     
-    
+    function agregarPermisosUsuario(){
+        
+        $this->m_usuario->addPermisosUsuario($nid,$data);
+    }
 }

@@ -37,8 +37,8 @@ class C_graficos extends CI_Controller {
         
         $usua = $this->m_usuario->getUsuariosbyEstado($estado);
         
-        $tab = '      <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped" data-show-columns="true">
+        $tab = '      <div style="height:500px" class="table-responsive">
+                            <table id="table" class="table table-bordered table-hover table-striped" data-show-columns="true">
                                 <thead>
                                     <tr>
                                         <th style="text-align:center">DNI</th>
