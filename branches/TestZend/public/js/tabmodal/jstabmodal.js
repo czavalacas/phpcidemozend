@@ -8,3 +8,9 @@ function abrirModal(nid){
 
     $('#myModal').modal('toggle');
 }
+
+function entrada(){
+	$('#example').dataTable( {
+        "pagingType": "full_numbers"
+    } );
+}

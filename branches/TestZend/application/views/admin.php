@@ -66,6 +66,8 @@
            }else if(id == 'check'){
         	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
         	   loadjscssfile("<?php echo base_url();?>public/css/"+id+"/cs"+id+".css","css");
+           }else if(id == 'muchos'){
+        	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
            }
 
            

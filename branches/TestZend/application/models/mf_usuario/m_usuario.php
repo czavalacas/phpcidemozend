@@ -104,6 +104,24 @@ class M_usuario extends CI_Model{
 	    return $data;
 	}
 	
+	function getPermisosxUsuario($nid){
+	    $query = "SELECT m.desc_menu, m.id_menu FROM menuxusuario o JOIN menu AS m ON m.id_menu = o.id_menu WHERE o.nidusuario = ?";
+	    
+	    $result = $this->db->query($query, array($nid));
+	     
+	    $data = array();
+	    foreach($result->result() as $row) {
+	            $fila = array("desc_menu"=>$row->desc_menu,"id_menu"=>$row->id_menu);
+	            array_push($data, $fila);
+	    }
+	     
+	    return $data;
+	}
+	
+	function addPermisosUsuario($nid,$data){
+	    
+	}
+	
 	function getCountEstUsua(){
 	    $result = $this->db->query("SELECT estado_usuario, COUNT(*) as cuenta FROM admusua GROUP BY estado_usuario;");
 	    
