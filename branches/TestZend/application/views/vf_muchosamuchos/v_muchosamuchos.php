@@ -29,7 +29,7 @@
                 <h4 class="modal-title" id="myModalLabel">Agregar permisos a usuario</h4>
               </div>
               <div class="modal-body">
-              <div id="contenido"></div>
+              <div id="contenidoIngresar"></div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
