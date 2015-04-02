@@ -6,6 +6,7 @@ class C_muchosamuchos extends CI_Controller {
     function __construct(){
         parent::__construct();
         $this->load->model('mf_usuario/m_usuario');
+        $this->load->model('mf_menu/m_menu');
     }
     
     function index(){
@@ -92,8 +93,46 @@ public function init(){
         echo $res;   
     }
     
-    function agregarPermisosUsuario(){
+    public function getlistaPermisos($nidUsuario){
         
-        $this->m_usuario->addPermisosUsuario($nid,$data);
+        $result = $this->m_usuario->getPermisosxUsuario($nidUsuario);
+        $result1 = $this->m_menu->getMenuByNotidUsuario($nidUsuario);
+        
+        $res = 'VERDE = ASIGNADO   -    ROJO = NO ASIGNADO  <br/>';
+        
+        $tipo = 1;
+        
+        foreach($result as $fila){
+            $tipo = 0;
+            $res.='<button type="button" id="'.$fila['id_menu'].'" onclick="agregarPermiso('.$fila['id_menu'].','.$nidUsuario.','.$tipo.')" class="btn btn-success">'.$fila['desc_menu'].'</button> <br/>';
+        }
+        
+        foreach($result1 as $fila){
+            $tipo = 1;
+            $res.='<button type="button" id="'.$fila['id_menu'].'" onclick="agregarPermiso('.$fila['id_menu'].','.$nidUsuario.','.$tipo.')" class="btn btn-danger">'.$fila['desc_menu'].'</button> <br/>';
+        }
+        
+        
+        echo $res;
+    }
+    
+    public function transPermisosUsuario(){
+        
+        $myPostData = json_decode($_POST['myPostData'],true);
+        $nidPermiso = $myPostData["nidPermiso"];
+        $nidUsuario = $myPostData["nidUsuario"];
+        $tipo = $myPostData["tipo"];
+        
+        if($tipo == 1){
+            $newRow = array(
+                "id_menu" => $nidPermiso,
+                "nidusuario" => $nidUsuario
+            );
+            
+            $this->m_menu->insertarUsuarioMenu($newRow);
+        }else{
+            $this->m_menu->eliminarUsuarioMenu($nidUsuario,$nidPermiso);
+        }
+        
     }
 }
