@@ -2,7 +2,6 @@
       <h1>Titulo:: <?php echo $titulo;?></h1>
       Tutorial de Envio de Correos Con CodeIgniter
       <br>
-      <form>
 	    <div class="form-group">
 	      <input type="text" class="form-control" id="txtFrom" placeholder="Correo Gmail">
 	    </div>
@@ -18,10 +17,14 @@
 	    <div class="form-group">
 	      <textarea class="form-control" rows="6" id="txtBody" placeholder="Contenido"></textarea>
 	    </div>
-	    <!--button id="btnEnviar" name="btnEnviar" class="btn btn-success" 
-	            onclick="enviarCorreo($('#txtFrom').val(),$('#txtPwd').val(),$('#txtDestino').val(),$('#txtAsunto').val(),$('#txtBody').val())">Enviar Correo</button-->
-	    <input id="btnEnviar" type="submit" value="Enviar Correo" onclick="enviarCorreo($('#txtFrom').val(),$('#txtPwd').val(),$('#txtDestino').val(),$('#txtAsunto').val(),$('#txtBody').val())"
+	    <div id="cont">
+	    <?php echo form_open_multipart('subir','id="myForm"');?>
+			 <input id="itFile" type="file" name="userfile" size="20" /><br>
+			 <input id="btnEnviar" type="submit" value="Enviar Correo" 
+onclick="enviarCorreo($('#txtFrom').val(),$('#txtPwd').val(),$('#txtDestino').val(),$('#txtAsunto').val(),$('#txtBody').val(),$('#myForm'),$('#cont'))"
 	    	   class="btn btn-success"/>
+		 </form>
+		</div>
+		<br>
 	    <div id="contenido"></div>
-	  </form>
 </div>
