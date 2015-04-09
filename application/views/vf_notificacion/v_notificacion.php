@@ -25,6 +25,8 @@
    </div>
    
    <br>
+   DENLE CLICK AL ICONO DEL SOBRE PARA VER LOS ULTIMOS 5 MENSAJES 
+   <br>
    
    <ul class="nav top-nav">
    <li class="dropdown" onclick="verNotificaciones()">
