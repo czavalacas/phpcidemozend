@@ -70,8 +70,10 @@
         	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
            }else if(id == 'mail'){
         	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
-           }
-
+           }else if(id == 'notif'){
+        	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
+           }   
+       	    
            
                
     	   $.ajax({
