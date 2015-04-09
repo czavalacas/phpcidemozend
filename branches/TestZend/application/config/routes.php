@@ -59,6 +59,7 @@ $route['trans'] = 'cf_transacciones/c_transacciones';
 $route['muchos'] = 'cf_muchosamuchos/c_muchosamuchos';
 $route['mail'] = 'cf_mail/c_mail';
 $route['notif'] = 'cf_notificacion/c_notificacion';
+$route['tabPanel'] = 'cf_tabPanel/c_tabPanel';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

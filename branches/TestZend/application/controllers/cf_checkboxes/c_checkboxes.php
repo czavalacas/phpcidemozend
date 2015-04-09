@@ -8,7 +8,7 @@ class C_checkboxes extends CI_Controller {
 	}
 
 	public function index(){
-		if(isset($_POST['idObj'])){
+		if(isset($_POST['idObj'])){			
 			$rutas = $this->m_checkboxes->getRutaCertificacion();
 			$strConcatenado='';
 			
