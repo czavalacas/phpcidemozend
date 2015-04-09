@@ -23,6 +23,8 @@ class C_mail extends CI_Controller {
 		$adjuntoRuta = $myPostData['adjuntoRuta'];
 		//hola mundo
 		//etc
+    //hola de nuevo mundo
+    //etc nro 2
 		//log_message('error','datos: '.$correo.' '.$claveCorreo.' '.$destino.' '.$asunto.' '.$body);
 		$res = $this->enviarCorreoGmail($correo, $claveCorreo, $destino, $asunto, $body,$adjuntoRuta);
 		echo $res;
