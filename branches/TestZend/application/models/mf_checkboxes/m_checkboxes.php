@@ -13,7 +13,7 @@ class M_checkboxes extends CI_Model{
 
 	function updatearRutaCertificacion($update_data,$id){
 		
-		$this->db->update('admrutacerti', $update_data, "nidRuta = ".$id);
+		$this->db->update('admrutacerti', $update_data, "nidruta = ".$id);
 	}
 	
 	function insertarRuta($insert_data){

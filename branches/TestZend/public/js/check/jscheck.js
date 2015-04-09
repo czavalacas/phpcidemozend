@@ -62,11 +62,13 @@ function customCheckbox(checkboxName){
     });
 }
 
+
 function realizaProceso(valorCaja1, valorCaja2){
 	//Primero definir los valores a enviar
 	$valorCaja1=valorCaja1;
 	$valorCaja2=valorCaja2;
     $.ajax({
+    	
           //  data:  parametros,
             url:   'index.php/cf_checkboxes/c_checkboxes/sumas/'+$valorCaja1+'/'+$valorCaja2, //direcion y parametros del metodo que se ejecutara
             type:  'post',
@@ -75,9 +77,14 @@ function realizaProceso(valorCaja1, valorCaja2){
             },
             success:  function (response) {
                     $("#resultado").html(response);
+                    $('#alert_placeholder').html('<div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><span>Se Realizo la Operacion.</span></div>')
+                    setTimeout(function() {
+                        $("div.alert").remove();
+                    }, 3000);
             }
     });
-    
+   
+		   
 }
 
 function getPopupNuevaRuta(){	
@@ -96,8 +103,8 @@ function getPopupNuevaRuta(){
 
 function agregarRuta(){
 	if($('#inputRuta').val()==''){
-		 alert("Ingrese un Nombre Valido");
-		 
+		 alert("Ingrese un Nombre Valido");		 
+	
 	}else{
 		$data=$('#inputRuta').val();
 		 $.ajax({
@@ -119,6 +126,5 @@ function agregarRuta(){
 		
 		 $("#myModal").hide();//esconde popup
 	}
-	
-}
 
+}

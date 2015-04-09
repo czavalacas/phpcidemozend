@@ -24,6 +24,7 @@
    <!--<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
    <!-- Bootstrap Core JavaScript -->
    <script src="<?php echo base_url();?>public/js/bootstrap.min.js"></script>
+   <script src="<?php echo base_url();?>public/js/bootbox.min.js"></script>
    
 
    
@@ -72,8 +73,9 @@
         	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
            }else if(id == 'notif'){
         	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
-           }   
-       	    
+           }else if(id == 'tabPanel'){
+        	   loadjscssfile("<?php echo base_url();?>public/js/"+id+"/js"+id+".js","js");
+           }       	    
            
                
     	   $.ajax({

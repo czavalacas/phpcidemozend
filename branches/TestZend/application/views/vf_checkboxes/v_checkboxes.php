@@ -1,6 +1,22 @@
+        <button class="btn2 btn-danger" >Alert Box!</button>
+   
+  <script type="text/javascript">
+  $(document).ready(function(){
+		$('.btn2').on('click',function(){
+			bootbox.confirm("hello there!",  function(res){
+				alert("esta bien");
+				});
+			
+		});
+	});
+	
+  </script>
+  
    <div id="content">
       <h1>Titulo:: <?php echo $titulo?></h1>     
       <br>
+      </div>
+ 
  <div id="conte">
             
 <?php 
@@ -9,6 +25,12 @@ foreach($checkbox as $chk){
 	echo $chk;
 }
 ?>
+
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+    <span class="sr-only">45% Complete</span>
+  </div>
+</div>
 
 </div>
  <br>
@@ -30,9 +52,13 @@ foreach($checkbox as $chk){
   <br/>
 
   Resultado: <span id="resultado">0</span>
-
-  </div>
   
+  
+  
+  <div id = "alert_placeholder"></div>
+  
+  
+
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
       <div class="modal-content">
               <div class="modal-header">
@@ -47,5 +73,26 @@ foreach($checkbox as $chk){
               </div>
             </div>
       </div>   
-
+    
+    <button href = "#popPup" data-toggle="modal">Show popPup
+    </button>
+    
+    <div class = "modal fade" id = "popPup" role = "dialog">
+    <!-- 	 <div class = "modal-dialog" > --> comentado por que sino sale un fondo blanco
+    		<div class = "modal-content">
+    			<div class = "modal-header">
+    				<h4>TITULO</h4>
+    			</div>
+    			<div class = "modal-body">
+    				<p>Contenido .....................</p>
+    			</div>
+    			<div class ="modal-footer">
+    				<button class="btn btn-primary" data-dismiss = "modal">Close</button>
+    				<button data-dismiss ="modal">Cerrar</button>
+    			</div>
+    		</div>	   	
+    <!-- 	</div>-->
+    </div>
+    
+ 
 
