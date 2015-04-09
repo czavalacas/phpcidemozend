@@ -13,7 +13,7 @@ class C_mail extends CI_Controller {
 		}
 	}
 	
-	public function enviarCorreo(){
+  public function enviarCorreo(){//metodo
 		$myPostData  = json_decode($_POST['myPostData'],true);
 		$correo      = $myPostData["correoEnvia"];
 		$claveCorreo = $myPostData["claveCorreo"];
@@ -41,7 +41,7 @@ class C_mail extends CI_Controller {
 			'newline' => "\r\n",
 			'starttls' => TRUE
 		);
-		//cargamos la configuración para enviar con gmail
+		//cargamos la configuraciÃ³n para enviar con gmail
 		$this->email->initialize($configGmail);
 	
 		$this->email->from($correo);
